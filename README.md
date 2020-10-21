@@ -20,3 +20,19 @@ pip install pyttsx3 -U
 pip install PyPDF2 -U
 
 Depois disso é só Codar! Enjoy!!
+
+
+Simple Code!
+
+import pyttsx3
+import PyPDF2
+arquivo = open('arquivo.pdf', 'rb')
+pdfReader = PyPDF2.PdfFileReader(arquivo)
+pages = pdfReader.numPages
+
+fala = pyttsx3.init()
+for num in range(pages):
+    page = pdfReader.getPage(num)
+    texto = page.extractText()
+    fala.say(texto)
+    fala.runAndWait()
